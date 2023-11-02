@@ -1,0 +1,73 @@
+.logo{
+
+    text-align: center;
+    color: rgb(20, 20, 19);
+    text-decoration: solid;
+    font-size: xx-large;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.interface{
+    border-color:black;
+    background-color: rgb(243, 234, 184);
+    width: 900px;
+    height: 300px;
+    text-align: center;
+    font-size: large;
+    font-weight: 900;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    
+   
+    /* width: 150px;
+    height: 100px;*/
+} 
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: rgb(178, 238, 238);
+}
+header{
+    position: absolute;
+    
+    top: 0px;
+    left: 0px;
+    right: 0;
+    text-align: center;
+    height: 85px;
+    background-color:rgb(199, 238, 154);
+    
+}
+.header{
+
+    padding: 0px;
+    width: 288.98px;
+    border: -1;
+    
+    background-color: rgb(199, 238, 154);
+}
+button{
+    background-color:green;
+    color:black;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    width: 150px;
+    height: 30px;
+}
+
+
+select{
+    background-color: rgb(245, 149, 31);
+    width: 200px;
+    height: 30px;
+    text-align: center;
+}
+
+input{
+    background-color: green;
+    color: black;
+    height: 30px;
+    width: 200px;
+    font-weight: bold;
+}
