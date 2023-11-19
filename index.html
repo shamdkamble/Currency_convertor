@@ -1,81 +1,152 @@
-<html>
-    <head>
-        <title>
-            Currency Converter 
-        </title>
-        <link rel="stylesheet" href="Assets/css/style.css">
-
-
-    </head>
-    <body>
-
-       <header> <table class = "header" align="center" border="1">
-          <tr>
-            <th class = "logo">Currency converter </th>
-          </tr>
-        </table>
-        <br>
-      </header>
-
-        <script src = "Assets/js/main.js"></script>
-      <table class= "interface" align="center" border="2">
-        <tr>
-          <th>FROM</th>
-          <td>
-            <select id = "from">
-              <option value = "INR">INDIA</option>
-              <option value = "USD">AMERICA </option>
-              <option value = "AUD">AUSTRALIA</option>
-            </select>
-          </td>
-        </tr>
-
-        <tr>
-          <th>TO</th>
-          <td>
-            <select id = "to">
-              <option value = "INR">INDIA</option>
-              <option value = "USD">AMERICA </option>
-              <option value = "AUD">AUSTRALIA</option>
-            </select>
-          </td>
-        </tr>
-
-        <tr>
-
-          <th>ENTER AMOUNT</th>
-          <td><input type ="number" id = "amt"> </td>
-
-
-        </tr>
-        <tr>
-          <td><button onclick="convert()">CONVERT</button></td>
-      
-          <td id = "result"></td>
-        </tr>
-      </table>
-
-
-    </body>
-</html>
-
-<!-- <!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Convertor</title>
+    <style>
+    .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+h2{
+    text-align: center;
+    /* background-color: blue; */
+    color: rgb(252, 252, 252);
+}
+table{
+    padding: 20px;
+  
+    /* background-image: url(https://c0.wallpaperflare.com/preview/902/404/8/blurred-background-close-up-colors-dark.jpg); */
+    background-color: transparent;
+    box-shadow: 0px 0px 5px rgb(166, 154, 154);
+    color: white;
+    font-weight: 200;
+}
+table,td{
+    border: 1px solid rgb(128, 104, 104);
+    border-radius: 15px;
+}
+body{
+    background-image: url(https://c0.wallpaperflare.com/preview/902/404/8/blurred-background-close-up-colors-dark.jpg);
+    background-repeat: no-repeat;
+  
+    background-size: 100%;
+}
+button{
+  width: 60%;
+  border-radius: 15px;
+}
+button:hover{
+    cursor: -webkit-grabbing;
+    background-color: #4CAF50;
+}
+input:focus,select:focus{
+    outline: none;
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.7);
+}
+input{
+    border-radius: 15px;
+}
+select{
+    border-radius: 15px;
+}
+@keyframes fadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        h2 {
+            text-align: center;
+            background-color: transparent;
+            color: rgb(252, 252, 252);
+            /* Apply animation */
+            animation: fadeInScale 1s ease-in-out;
+            
+        }
+        h2:hover {
+            transform: scale(1.2);
+        }
+
+      
+      
+    </style>
 </head>
 <body>
-  <h1>Currency Converter</h1>
-  <div class="converter">
-    <input type="number" id="amount" placeholder="Amount">
-    <select id="fromCurrency"></select>
-    <span>to</span>
-    <select id="toCurrency"></select>
-    <button id="convert">Convert</button>
-  </div>
-  <div class="result" id="result"></div>
+    <h2>Currency Converter</h2>
+    <div class="container">
+        
+        <br>
+        
+        <table>
+            <tr>
+                <td>Enter Amount</td>
+                <td><input type="amt" id="amt" name="amt"></td>
+            </tr>
+            <tr>
+                <td>From</td>
+                <td>
+                    <select id="from">
+                        <option value="INR">INR</option>
+                        <option value="USD">USD</option>
+                        <option value="JPY">JPY</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>To</td>
+                <td>
+                    <select id="to">
+                        <option value="INR">INR</option>
+                        <option value="USD">USD</option>
+                        <option value="JPY">JPY</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                
+                <td align="center" colspan="2"><button type="submit" id="convert">Convert</button></td>
+            </tr>
+            <tr>
+                <td>Converted Value </td>
+                <td id = "result"></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        const fromCurrency = document.getElementById("from");
+        const toCurrency = document.getElementById("to");
+        const result = document.getElementById("result");
+        const amount = document.getElementById("amt");
+        const convert = document.getElementById("convert");
 
-  <script src="script.js"></script>
+        convert.addEventListener('click', () => {
+    const from = fromCurrency.value;
+    const to = toCurrency.value;
+    const userAmount = amount.value;
+
+    fetch(`https://api.exchangerate-api.com/v4/latest/${from}`)
+        .then(response => response.json())
+        .then(data => {
+            const exchangeRate = data.rates[to];
+            const convertedAmount = userAmount * exchangeRate;
+            result.innerHTML = `${userAmount} ${from} = ${convertedAmount.toFixed(2)} ${to}`;
+        })
+
+    });
+
+
+    </script>
+    
+    
 </body>
-</html> -->
-
+</html>
